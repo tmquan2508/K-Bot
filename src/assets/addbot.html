@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./addbot.css">
+</head>
+
+<header>
+    <h1>Add Bot</h1>
+    <div class="header-buttons">
+        <button class="minimal-button" id="minimal-button"><img src="../assets/icon/minimal.svg"></button>
+        <button class="close-button" id="close-button"><img src="../assets/icon/close.svg"></button>
+    </div>
+</header>
+
+<body>
+    <div class="addbot-box">
+        <div class="input">
+            <div class="form-group">
+                <label for="username">Name:</label>
+                <input type="text" id="username" class="name" placeholder="">
+            </div>
+
+            <div class="form-group">
+                <label for="server">Server:</label>
+                <input type="text" id="server" class="server" value="192.168.1.7:54073">
+            </div>
+
+            <div class="form-group">
+                <label for="count">Count:</label>
+                <input type="number" id="count" class="count">
+            </div>
+
+            <div class="form-group">
+                <label for="delay">Delay:</label>
+                <input type="text" id="delay" class="delay">
+            </div>
+            
+            <div class="form-group-2">
+                <label for="version">Version: </label>
+                <select id="version" class="version">
+                    <option value="">Auto</option>
+                    <!-- <option value="1.20">1.21</option>
+                    <option value="1.20">1.20.6</option>
+                    <option value="1.20">1.20.5</option> -->
+                    <option value="1.20">1.20.4</option>
+                    <option value="1.20">1.20.3</option>
+                    <option value="1.20">1.20.2</option>
+                    <option value="1.20">1.20.1</option>
+                    <option value="1.20">1.20</option>
+                    <option value="1.19.4">1.19.4</option>
+                    <option value="1.19.3">1.19.3</option>
+                    <option value="1.19.2">1.19.2</option>
+                    <option value="1.19.1">1.19.1</option>
+                    <option value="1.19">1.19</option>
+                    <option value="1.18.2">1.18.2</option>
+                    <option value="1.18.1">1.18.1</option>
+                    <option value="1.18">1.18</option>
+                    <option value="1.17.1">1.17.1</option>
+                    <option value="1.17">1.17</option>
+                    <option value="1.16.5">1.16.5</option>
+                    <option value="1.16.4">1.16.4</option>
+                    <option value="1.16.3">1.16.3</option>
+                    <option value="1.16.2">1.16.2</option>
+                    <option value="1.16.1">1.16.1</option>
+                    <option value="1.16">1.16</option>
+                    <option value="1.15.2">1.15.2</option>
+                    <option value="1.15.1">1.15.1</option>
+                    <option value="1.15">1.15</option>
+                    <option value="1.14.4">1.14.4</option>
+                    <option value="1.14.3">1.14.3</option>
+                    <option value="1.14.1">1.14.1</option>
+                    <option value="1.14">1.14</option>
+                    <option value="1.13.2">1.13.2</option>
+                    <option value="1.13.1">1.13.1</option>
+                    <option value="1.13">1.13</option>
+                    <option value="1.12.2">1.12.2</option>
+                    <option value="1.12.1">1.12.1</option>
+                    <option value="1.12">1.12</option>
+                    <option value="1.11.2">1.11.2</option>
+                    <option value="1.11">1.11</option>
+                    <option value="1.10.2">1.10.2</option>
+                    <option value="1.10.1">1.10.1</option>
+                    <option value="1.10">1.10</option>
+                    <option value="1.9">1.9</option>
+                    <option value="1.8">1.8.x</option>
+                </select>
+            </div>
+
+
+            <div class="form-group-3">
+                <label for="connect-message">Connect message:</label>
+                <input type="checkbox" id="connect-message">
+            </div>
+
+            <div class="form-group-4">
+                <label for="input-connect-message">Input connect message:</label>
+                <input type="text" id="input-connect-message">
+            </div>
+
+            <div class="form-group-5">
+                <label for="name-generator">Name gen:</label>
+                <select id="name-generator">
+                    <option value="default">Default</option>
+                    <option value="legit">Legit</option>
+                    <option value="random">Random</option>
+                    <option value="file">File</option>
+                </select>
+                
+                <div id="form-name-file" style="display: none;">
+                    <input type="file" id="name-file" class="name-file">
+                </div>
+            </div>
+    
+            <div class="form-group-6">
+                <label for="auth-type">Auth type:</label>
+                <select id="auth-type">
+                    <option value="cracked">Cracked</option>
+                    <option value="microsoft">Microsoft</option>
+                </select>
+            </div>
+
+            <button id="join"> Join</button>
+        </div>
+
+        <div class="connect-log">
+
+        </div>
+    </div>
+
+    <script src="../control/addbot.js"></script>
+    <script src="../control/html-addbot.js"></script>
+</body>
+</html>
