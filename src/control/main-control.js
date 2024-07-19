@@ -1,25 +1,23 @@
-const mineflayer = require('mineflayer')
+const { ipcRenderer } = require("electron");
 
-const join = document.getElementById('join');
-
-let server = "147.185.221.20:44657"
-
-let shost = server.split(':')[0]
-let sport = server.split(':')[1]
-
-join.addEventListener('click', function() {
-
-    const bot = mineflayer.createBot({
-        host: shost,
-        port: sport,
-        username: 'Bot',
-        version: '1.20.4',
+function control(bot, host, port, version) {
+    let username = bot._client.username
+    bot.on('login', () => {
+        ipcRenderer.send('bot-join', { username, host, port });
+        console.log(username)
     })
 
-    bot.on('spawn', () => {
-        bot.chat('hello')
+    bot.on('end', () => {
+        ipcRenderer.send('bot-left', { username, host, port })
+        console.log(username + 'end')
     })
 
-    console.log('1')
-});
+    bot.on('chat', (username, message) => {
+        if (username !== bot._client.username) {
+            console.log(`[${username}] ${message}`);
+        }
+    });
+    
+}
 
+module.exports = { control };

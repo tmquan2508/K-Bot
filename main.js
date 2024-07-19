@@ -15,6 +15,14 @@ function createWindow() {
 
     mainWindow.loadFile('./src/index.html')
     // mainWindow.webContents.openDevTools()
+
+    ipcMain.on('bot-join', (event, botdata) => {
+        mainWindow.webContents.send('add-bot-to-list', botdata);
+    });
+
+    ipcMain.on('bot-left', (event, botdata) => {
+        mainWindow.webContents.send('remove-bot-from-list', botdata);
+    });
 }
 
 app.whenReady().then(createWindow)

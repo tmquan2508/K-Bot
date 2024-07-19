@@ -1,28 +1,24 @@
-/* width */
-::-webkit-scrollbar {
-    width: 5px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #888;
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: sans-serif ;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+  
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+  
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
 
 body {
@@ -51,6 +47,7 @@ header {
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #ccc;
+    -webkit-app-region: drag;
 }
 
 h1 {
@@ -74,6 +71,7 @@ h1 {
     background: none;
     cursor: pointer;
     margin-left: 5px;
+    -webkit-app-region: no-drag;
 }
 
 .close-button:hover, .minimal-button:hover {
@@ -94,15 +92,6 @@ h1 {
     text-align: center;
     margin: 0;
     padding: 0;
-}
-
-.bot-list {
-    height: 495px;
-    width: 280px;
-    background-color: #959595;
-    margin-bottom: 5px;
-    margin-left: 1px;
-    overflow-y: auto;
 }
 
 .add-bot {
@@ -131,4 +120,62 @@ h1 {
   
 .add-bot:hover .icon {
     filter: brightness(0) saturate(100%) invert(77%) sepia(5%) saturate(9%) hue-rotate(354deg) brightness(94%) contrast(89%) blur(0.4px);
+}
+
+.bot-list {
+    height: 495px;
+    width: 280px;
+    background-color: #959595;
+    margin-bottom: 5px;
+    margin-left: 1px;
+    overflow-y: auto;
+    text-align: start;
+}
+
+.bot-div {
+    padding: 2px;
+    margin: 0px;
+    cursor: pointer;
+}
+
+.active-bot {
+    background-color: lightgreen;
+}
+
+.inactive-bot {
+    background-color: lightcoral;
+}
+
+.server-div {
+    padding: 2px;
+}
+
+.server-more {
+    width: 1em; /* Adjust width as needed */
+    height: 1em; /* Adjust height as needed */
+    /* Optional styling for the icon */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: transform 0.3s; /* Optional transition for hover effects */
+}
+
+.server-more[data-status="show"] {
+    transform: rotate(0deg);
+}
+
+.server-more[data-status="hide"] {
+    transform: rotate(90deg);
+}
+
+.server-label {
+    display: flex;
+    justify-content: space-between; /* Aligns content to the start and end of the line */
+    align-items: center; /* Centers items vertically */
+    padding: 0.5em; /* Optional padding for spacing */
+    border: 1px solid #ddd; /* Optional border */
+    border-radius: 4px; /* Optional rounded corners */
+    background-color: none; /* Optional background color */
+  }
+  
+.server-info {
+    font-size: 1em;
 }

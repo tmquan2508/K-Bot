@@ -22,6 +22,7 @@ header {
     border-bottom: white 0.5px solid;
     flex: 1;
     background-color: black;
+    -webkit-app-region: drag;
 }
 
 h1 {
@@ -45,7 +46,8 @@ h1 {
     border: none;
     background: none;
     cursor: pointer;
-    margin-left: 5px;   
+    margin-left: 5px;
+    -webkit-app-region: no-drag;
 }
 
 .close-button:hover, .minimal-button:hover {
@@ -125,6 +127,40 @@ h1 {
     padding: 0px;
     width: 300px;
     background: none;
+}
+
+.form-group-5 {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.form-group-5 label {
+    width: 90px;
+}
+
+.form-group-5 select {
+    border: none;
+    outline: none;
+    background: none;
+    color: white
+}
+
+.form-group-6 {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.form-group-6 label {
+    width: 90px;
+}
+
+.form-group-6 select {
+    border: none;
+    outline: none;
+    background: none;
+    color: white
 }
 
 .connect-log {
