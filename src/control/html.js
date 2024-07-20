@@ -1,3 +1,7 @@
+document.addEventListener("DOMContentLoaded", function () {
+  showsection("botting");
+});
+
 const { ipcRenderer } = require('electron');
 
 document.getElementById('open-add-bot').addEventListener('click', () => {
@@ -11,6 +15,19 @@ document.getElementById('close-button').addEventListener('click', () => {
 document.getElementById('minimal-button').addEventListener('click', () => {
   ipcRenderer.send('minimal-app')
 })
+
+const boticon = document.getElementById('bot-icon');
+const botcountelement = document.getElementById('bot-count');
+let botcount = parseInt(botcountelement.textContent, 10);
+function updatebotcount() {
+  botcountelement.textContent = botcount;
+
+  if (botcount >= 2) {
+      boticon.src = './assets/icon/multiple.svg';
+  } else {
+      boticon.src = './assets/icon/single.svg';
+  }
+}
 
 ipcRenderer.on('add-bot-to-list', (event, botdata) => {
   const botlist = document.getElementById('bot-list');
@@ -50,25 +67,22 @@ ipcRenderer.on('add-bot-to-list', (event, botdata) => {
 
   const botdiv = document.createElement('div');
   botdiv.innerHTML = `<div class='bot-div'>${botdata.username}</div>`;
-  botdiv.classList.add('inactive-bot');
-  botdiv.dataset.status = 'inactive-bot';
 
-  botdiv.addEventListener('click', () => {
-    if (botdiv.dataset.status === 'inactive-bot') {
-      botdiv.classList.remove('inactive-bot');
-      botdiv.classList.add('active-bot');
-      botdiv.dataset.status = 'active-bot';
-    } else {
-      botdiv.classList.remove('active-bot');
-      botdiv.classList.add('inactive-bot');
-      botdiv.dataset.status = 'inactive-bot';
-    }
-  });
+  if (document.getElementById('auto-select').checked) {
+    botdiv.classList.add('active-bot');
+    botdiv.dataset.status = 'active-bot';
+  } else {
+    botdiv.classList.add('inactive-bot');
+    botdiv.dataset.status = 'inactive-bot';
+  }
+
+  botdiv.addEventListener('click', botclick);
 
   serverdiv.querySelector('.server-div').appendChild(botdiv);
+
+  botcount += 1
+  updatebotcount();
 });
-
-
 
 ipcRenderer.on('remove-bot-from-list', (event, botdata) => {
   const botlist = document.getElementById('bot-list');
@@ -95,4 +109,86 @@ ipcRenderer.on('remove-bot-from-list', (event, botdata) => {
       }
     }
   }
+
+  botcount -= 1
+  updatebotcount();
 });
+
+document.getElementById('select-button').addEventListener('click', () => {
+  const allbots = document.querySelectorAll('.bot-div');
+  const activebots = document.querySelectorAll('.bot-div.active-bot');
+  const selectall = activebots.length < allbots.length;
+
+  allbots.forEach(bot => {
+    bot.removeEventListener('click', botclick);
+    if (selectall) {
+      bot.classList.remove('inactive-bot');
+      bot.classList.add('active-bot');
+      bot.dataset.status = 'active-bot';
+    } else {
+      bot.classList.remove('active-bot');
+      bot.classList.add('inactive-bot');
+      bot.dataset.status = 'inactive-bot';
+    }
+    bot.addEventListener('click', botclick);
+  });
+});
+
+document.querySelectorAll('.bot-div').forEach(bot => {
+  bot.addEventListener('click', botclick);
+});
+
+function botclick() {
+  if (this.dataset.status === 'inactive-bot') {
+    this.classList.remove('inactive-bot');
+    this.classList.add('active-bot');
+    this.dataset.status = 'active-bot';
+  } else {
+    this.classList.remove('active-bot');
+    this.classList.add('inactive-bot');
+    this.dataset.status = 'inactive-bot';
+  }
+}
+
+showcontrol('message-control')
+function showsection(sectionid) {
+
+  const allsections = document.querySelectorAll(".page-section");
+  for (const section of allsections) {
+    section.style.display = "none";
+  }
+
+  const selectedSection = document.getElementById(sectionid);
+  selectedSection.style.display = "block";
+  git remote add origin
+  const buttons = document.getElementsByClassName("nav-button");
+  for (let i = 0; i < buttons.length; i++) {
+    buttons[i].classList.remove("active-button");
+  }
+
+  const selectedButton = document.querySelector(`button[onclick="showSection('${sectionid}')"]`);
+  selectedButton.classList.add("active-button");
+}
+
+function showcontrol(controlid) {
+  const allcontrolpage = document.querySelectorAll(".control-page section");
+  const controlbuttons = document.querySelectorAll(".control-button");
+
+  controlbuttons.forEach(button => {
+    button.classList.remove("control-button-selected");
+  });
+
+  const selectcontrolbutton = document.querySelector(`button[onclick="showcontrol('${controlid}')"]`);
+  selectcontrolbutton.classList.add("control-button-selected");
+
+  allcontrolpage.forEach((section) => {
+    section.style.display = "none";
+    section.classList.remove("open-control");
+  });
+
+  if (controlid) {
+    const selectcontrol = document.getElementById(controlid);
+    selectcontrol.style.display = "block";
+    selectcontrol.classList.add("open-control");
+  }
+}

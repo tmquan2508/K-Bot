@@ -87,12 +87,57 @@ h1 {
     background-color: rgb(36, 36, 36);
 }
 
-.control {
-    grid-area: 2 / 2 / 3 / 3;
-    text-align: center;
-    margin: 0;
-    padding: 0;
+.botmanage {
+    display: flex;
 }
+
+.bot-select {
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+}
+
+.select-button {
+    outline: none;
+    border: none;
+    border: 2px gray solid;
+    width: 50px;
+    height: 25px;
+    background-color: transparent;
+    cursor: pointer;
+    display: inline-block;
+    color: inherit;
+}
+
+.select-button:hover {
+    background-color: gray;
+}
+
+.select-button:active {
+    background-color: rgb(100, 100, 100);
+}
+
+.auto-select {
+    width: 24px;
+    height: 24px;
+    margin-left: 10px;
+    margin-right: 20px;
+}
+
+.botcount {
+    display: flex;
+    align-items: center;
+}
+
+.bot-count {
+    margin-left: 5px;
+    position: relative;
+    font-size: 20px;
+    overflow-y: visible;
+    width:  20px;
+    height: auto;
+}
+
 
 .add-bot {
     display: flex;
@@ -101,6 +146,7 @@ h1 {
     border: none;
     background: none;
     color: inherit;
+    margin-right: 20px;
     /* transition: color 0.3s ease; */
 }
   
@@ -110,16 +156,12 @@ h1 {
 }
 
 .add-bot:hover {
-    color: rgb(180, 180, 180);
+    color: gray;
     filter: blur(0.4px);
-}
-
-.add-bot:active {
-    color: gray,
 }
   
 .add-bot:hover .icon {
-    filter: brightness(0) saturate(100%) invert(77%) sepia(5%) saturate(9%) hue-rotate(354deg) brightness(94%) contrast(89%) blur(0.4px);
+    filter: brightness(0) saturate(100%) invert(53%) sepia(7%) saturate(0%) hue-rotate(63deg) brightness(93%) contrast(94%) blur(0.4px);
 }
 
 .bot-list {
@@ -127,13 +169,13 @@ h1 {
     width: 280px;
     background-color: #959595;
     margin-bottom: 5px;
-    margin-left: 1px;
+    margin-left: 1px;   
     overflow-y: auto;
     text-align: start;
 }
 
 .bot-div {
-    padding: 2px;
+    padding: 0px;
     margin: 0px;
     cursor: pointer;
 }
@@ -151,11 +193,10 @@ h1 {
 }
 
 .server-more {
-    width: 1em; /* Adjust width as needed */
-    height: 1em; /* Adjust height as needed */
-    /* Optional styling for the icon */
-    cursor: pointer; /* Change cursor to pointer on hover */
-    transition: transform 0.3s; /* Optional transition for hover effects */
+    width: 1em;
+    height: 1em;
+    cursor: pointer;
+    transition: transform 0.3s;
 }
 
 .server-more[data-status="show"] {
@@ -168,14 +209,161 @@ h1 {
 
 .server-label {
     display: flex;
-    justify-content: space-between; /* Aligns content to the start and end of the line */
-    align-items: center; /* Centers items vertically */
-    padding: 0.5em; /* Optional padding for spacing */
-    border: 1px solid #ddd; /* Optional border */
-    border-radius: 4px; /* Optional rounded corners */
-    background-color: none; /* Optional background color */
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: none;
   }
   
 .server-info {
     font-size: 1em;
+}
+
+.control {
+    grid-area: 2 / 2 / 3 / 3;
+    text-align: center;
+    padding: 0px;
+}
+
+.control h2 {
+    margin-top: 7px;
+    margin-bottom: -7px;
+}
+
+.navbar {
+    background-color: rgb(70, 70, 70);
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+  
+.navbar ul {
+    list-style: none;
+    display: flex;
+}
+  
+.navbar button {
+    color: inherit;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 10px;
+    width: 105px;
+    text-align: start;
+}
+  
+.navbar button:hover {
+    color: gray;
+    filter: blur(0.4px);
+    background-color: rgb(60, 60, 60);
+}
+
+.navbar button.active-button {
+    border-bottom: 4px solid orange;
+}
+  
+.navbar button.active-button:hover {
+    border-bottom: 4px solid orange;
+}
+
+.botting-ui {
+    text-align: start;
+    margin-left: 5px;
+    margin-top: 5px;
+    display: flex;
+}
+
+.botcontrol {
+    width: 200px;
+    height: 300px;
+    border: rgb(60, 60, 60) 2px solid;
+    overflow-x: hidden;
+    overflow-y: visible;
+}
+
+.control-button {
+    height: 30px;
+    width: 100%;
+    color: white;
+    background-color: lightgray;
+    outline: none;
+    border: none;
+}
+
+.control-button:hover {
+    background-color: gray;
+}
+
+.control-button:active {
+    background-color: rgb(100, 100, 100);
+}
+
+.control-button.control-button-selected {
+    background-color: rgb(25, 25, 25);
+}
+
+.open-control {
+    display: block;
+}
+
+.control-page {
+    width: 400px;
+    height: 450px;
+    margin-left: 5px;
+}
+
+.message-input {
+    color: inherit;
+    outline: none;
+    border: none;
+    border-bottom: 2px white solid;
+    background: none;
+    width: 100%;
+}
+
+.send-message-button-box {
+    text-align: center;
+}
+
+.send-message-button {
+    margin-top: 5px;
+    width: 100px;
+    height: 40px;
+}
+
+.console {
+    height: 480px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.console-log {
+    width: 280px;
+    height: 455px;
+    border: 2px gray solid;
+}
+
+.console-manage {
+    margin-top: 5px;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.auto-scroll {
+    width: 24px;
+    height: 24px;
+}
+
+.console-manage label {
+    margin-left: 5px;
+}
+
+.clear-console-log {
+    margin-left: 90px;
+    width: 60px;
+    height: 24px;
 }

@@ -22,13 +22,134 @@
                 
             </div>
 
-            <button id="open-add-bot" class="add-bot">
-                <img src="./assets/icon/plus.svg" alt="Add Icon" class="icon"> Add Bot
-            </button>
+            <div class="botmanage">
+                <button id="open-add-bot" class="add-bot">
+                    <img src="./assets/icon/plus.svg" alt="Add Icon" class="icon"> Add Bot
+                </button>
+    
+                <div class="bot-select">
+                    <button id="select-button" class="select-button">Select</button>
+                    <input type="checkbox" class="auto-select" id="auto-select">
+                </div>
+
+                <div class="botcount">
+                    <img src="./assets/icon/single.svg" id="bot-icon">
+                    <span id="bot-count" class="bot-count">0</span>
+                </div>
+            </div>
+
         </div>
         <div class="control">
-            <h2>Control</h2>
-            <div>wq</div>
+            <h2>Control and settings</h2>
+
+            <nav class="navbar">
+                <ul>
+                    <li><button onclick="showsection('botting')" class="nav-button">Botting</button></li>
+                    <li><button onclick="showsection('settings')" class="nav-button">Settings</button></li>
+                    <li><button onclick="showsection('macros')" class="nav-button">Macros</button></li>
+                    <li><button onclick="showsection('plugins')" class="nav-button">Plugins</button></li>
+                    <li><button onclick="showsection('tools')" class="nav-button">Tools</button></li>
+                    <li><button onclick="showsection('about')" class="nav-button">About</button></li>
+                </ul>
+              </nav>
+
+            <section id="botting" class="page-section">
+                <div class="botting-ui">
+                    <div class="botcontrol">
+                      <ul>
+                        <li><button class="control-button" onclick="showcontrol('message-control')">Chat</button></li>
+                        <li><button class="control-button" onclick="showcontrol('spam-control')">Spam</button></li>
+                        <li><button class="control-button" onclick="showcontrol('respawn-control')">Respawn</button></li>
+                        <li><button class="control-button" onclick="showcontrol('disconnect-control')">Disconnect</button></li>
+                        <li><button class="control-button" onclick="showcontrol('drop-control')">Drop</button></li>
+                        <li><button class="control-button" onclick="showcontrol('pathfinding-control')">Pathfinding</button></li>
+                        <li><button class="control-button" onclick="showcontrol('looks-control')">Looks</button></li>
+                        <li><button class="control-button" onclick="showcontrol('move-control')">Move</button></li>
+                        <li><button class="control-button" onclick="showcontrol('')">Click window</button></li>
+                        <li><button class="control-button" onclick="showcontrol('')">Anti-AFK</button></li>
+                        <li><button class="control-button" onclick="showcontrol('')">Killaura</button></li>
+                      </ul>
+                    </div>
+
+                    <div class="control-page">
+
+                      <section id="message-control">
+                        <label for="message-input">Message:</label>
+                        <input type="text" maxlength="256" id="message-input" class="message-input">
+                        
+                        <div class="send-message-button-box">
+                            <button class="send-message-button">Send</button>
+                        </div>
+                      </section>
+
+                      <section id="spam-control">
+                        <div>
+                            <label for="spam-input">Message:</label>
+                            <input type="text" name="spam-input" id="spam-input">
+                          </div>
+                          <div class="spam-delay-input-row">
+                            <label for="spam-delay-input">Spam delay:</label>
+                            <div class="spam-delay-bottom">
+                              <input type="number" id="spam-delay-input" placeholder="500" min="0"/>
+                              <button class="increase-spam-delay-input">+</button>
+                              <button class="decrease-spam-delay-input">-</button>
+                            </div>
+                          </div>
+                          <div class="anti-spam">
+                            <input type="checkbox" name="use-anti-spam" id="use-anti-spam">
+                            <label for="use-anti-spam">Use anti spam</label>
+                          </div>
+                          <div class="anti-spam-option">
+                            <label for="anti-spam-type">Anti spam type:</label>
+                            <select name="anti-spam-type" id="anti-spam-type">
+                              <option value="as-all">All</option>
+                              <option value="as-number">Number</option>
+                              <option value="as-letter">Letter</option>
+                              <option value="as-uppercase">Uppercase</option>
+                              <option value="as-lowercase">Lowercase</option>
+                              <option value="as-custom">Custom</option>
+                            </select>
+                            <input type="text" name="anti-spam-chars" id="anti-spam-chars" value="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+" readonly>
+                          </div>
+                          <div class="anti-spam-length-input-row">
+                            <label for="anti-spam-length-input">Anti spam length:</label>
+                            <div class="spam-delay-bottom">
+                              <input type="number" id="anti-spam-length-input" placeholder="500" min="1"/>
+                              <button class="increase-anti-spam-length-input">+</button>
+                              <button class="decrease-anti-spam-length-input">-</button>
+                            </div>
+                          </div>
+                          <div class="spam-time-input-row">
+                            <label for="spam-time-input">Spam time:</label>
+                            <div class="spam-delay-bottom">
+                              <input type="number" id="spam-time-input" placeholder="500" min="1"/>
+                              <button class="increase-spam-time-input">+</button>
+                              <button class="decrease-spam-time-input">-</button>
+                            </div>
+                          </div>
+                      </section>
+
+                    </div>
+
+                    <div class="console">
+                        <div class="console-log">
+
+                        </div>
+
+                        <div class="console-manage">
+                            <input type="checkbox" id="auto-scroll" class="auto-scroll">
+                            <label for="auto-scroll">Auto scroll</label>
+                    
+                            <button id="clear-console-log" class="clear-console-log">Clear</button>
+                        </div>
+                    </div>
+                        
+            </section>
+
+            <section id="settings" class="page-section">
+                SETTINGS
+            </section>
+
         </div>
     </div>
 
