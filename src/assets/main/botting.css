@@ -1,0 +1,99 @@
+.botting-ui {
+    text-align: start;
+    margin-left: 5px;
+    margin-top: 5px;
+    display: flex;
+}
+
+.botcontrol {
+    width: 200px;
+    height: 300px;
+    border: rgb(60, 60, 60) 2px solid;
+    overflow-x: hidden;
+    overflow-y: visible;
+}
+
+.control-button {
+    height: 30px;
+    width: 100%;
+    color: white;
+    background-color: lightgray;
+    outline: none;
+    border: none;
+}
+
+.control-button:hover {
+    background-color: gray;
+}
+
+.control-button:active {
+    background-color: rgb(100, 100, 100);
+}
+
+.control-button.control-button-selected {
+    background-color: rgb(25, 25, 25);
+}
+
+.open-control {
+    display: block;
+}
+
+.control-page {
+    width: 400px;
+    height: 450px;
+    margin-left: 5px;
+}
+
+.message-input {
+    color: inherit;
+    outline: none;
+    border: none;
+    border-bottom: 2px white solid;
+    background: none;
+    width: 100%;
+}
+
+.send-message-button-box {
+    text-align: center;
+}
+
+.send-message-button {
+    margin-top: 5px;
+    width: 100px;
+    height: 40px;
+}
+
+.console {
+    height: 480px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.console-log {
+    width: 280px;
+    height: 455px;
+    border: 2px gray solid;
+}
+
+.console-manage {
+    margin-top: 5px;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.auto-scroll {
+    width: 24px;
+    height: 24px;
+}
+
+.console-manage label {
+    margin-left: 5px;
+}
+
+.clear-console-log {
+    margin-left: 90px;
+    width: 60px;
+    height: 24px;
+}
+

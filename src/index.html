@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./assets/main/botting.css">
+    <link rel="stylesheet" href="./assets/main/settings.csss">
 </head>
 <body>
     <header>
@@ -48,7 +50,7 @@
                     <li><button onclick="showsection('settings')" class="nav-button">Settings</button></li>
                     <li><button onclick="showsection('macros')" class="nav-button">Macros</button></li>
                     <li><button onclick="showsection('plugins')" class="nav-button">Plugins</button></li>
-                    <li><button onclick="showsection('tools')" class="nav-button">Tools</button></li>
+                    <li><button onclick="showsection('extensions')" class="nav-button">Extensions</button></li>
                     <li><button onclick="showsection('about')" class="nav-button">About</button></li>
                 </ul>
               </nav>
@@ -78,55 +80,96 @@
                         <input type="text" maxlength="256" id="message-input" class="message-input">
                         
                         <div class="send-message-button-box">
-                            <button class="send-message-button">Send</button>
+                            <button id="send-message-button" class="send-message-button">Send</button>
                         </div>
                       </section>
 
                       <section id="spam-control">
-                        <div>
-                            <label for="spam-input">Message:</label>
-                            <input type="text" name="spam-input" id="spam-input">
+                        <div class="spam-control-box-1">
+                          <label for="spam-input">Message:</label>
+                          <input type="text" name="spam-input" id="spam-input">
+                        </div>
+
+                        <div class="spam-control-box-2">
+                          <label for="spam-delay-input">Spam delay:</label>
+                          <input type="number" id="spam-delay-input" placeholder="500" min="0"/>
+                        </div>
+
+                        <div class="spam-control-box-3">
+                          <input type="checkbox" name="use-anti-spam" id="use-anti-spam">
+                          <label for="use-anti-spam">Use anti spam</label>
+                        </div>
+
+                        <div class="spam-control-box-4">
+                          <label for="anti-spam-type">Anti spam type:</label>
+                          <select name="anti-spam-type" id="anti-spam-type">
+                            <option value="as-all">All</option>
+                            <option value="as-number">Number</option>
+                            <option value="as-letter">Letter</option>
+                            <option value="as-uppercase">Uppercase</option>
+                            <option value="as-lowercase">Lowercase</option>
+                            <option value="as-custom">Custom</option>
+                          </select>
+                          <input type="text" name="anti-spam-chars" id="anti-spam-chars" value="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+" readonly>
+                        </div>
+
+                        <div class="spam-control-box-5">
+                          <label for="anti-spam-lenght">Anti spam lenght:</label>
+                          <input type="number" id="anti-spam-lenght">
+                        </div>
+
+                        <div class="spam-control-box-5">
+                          <label for="spam-time">Spam time:</label>
+                          <input type="number" id="spam-time">
+                        </div>
+
+                        <div class="spam-control-box-6">
+                          <button id="spam-button-start">Start</button>
+                          <button id="spam-button-stop">Stop</button>
+                        </div>
+                      </section>
+
+                      <section id="respawn-control">
+                        <input type="checkbox" id="auto-respawn">
+                        <label for="auto-respawn">Auto respawn</label>
+
+                        <button id="respawn-button">Respawn</button>
+                      </section>
+
+                      <section id="disonnect-control">
+                        <button id="disconnect-button">Disconnect</button>
+                      </section>
+
+                      <section id="drop-control">
+                        <div class="drop-control-box-1">
+                          <input type="radio" name="drop-type" id="drop-slot">
+                          <label for="drop-slot">Drop slot</label>
+                          <input type="radio" name="drop-type" id="drop-items">
+                          <label for="drop-items">Drop items</label>
+                          <input type="radio" name="drop-type" id="drop-all">
+                          <label for="drop-all">Drop all</label>
+                        </div>
+
+                        <div class="drop-control-box-2">
+                          <div class="drop-slot-page">
+                            <label for="drop-slot-input">Drop slot:</label>
+                            <input type="number" id="drop-slot-input">
                           </div>
-                          <div class="spam-delay-input-row">
-                            <label for="spam-delay-input">Spam delay:</label>
-                            <div class="spam-delay-bottom">
-                              <input type="number" id="spam-delay-input" placeholder="500" min="0"/>
-                              <button class="increase-spam-delay-input">+</button>
-                              <button class="decrease-spam-delay-input">-</button>
-                            </div>
+
+                          <div class="drop-items-page">
+                            <label for="drop-items-input">Drop items:</label>
+                            <input type="text" id="drop-items-input">
                           </div>
-                          <div class="anti-spam">
-                            <input type="checkbox" name="use-anti-spam" id="use-anti-spam">
-                            <label for="use-anti-spam">Use anti spam</label>
-                          </div>
-                          <div class="anti-spam-option">
-                            <label for="anti-spam-type">Anti spam type:</label>
-                            <select name="anti-spam-type" id="anti-spam-type">
-                              <option value="as-all">All</option>
-                              <option value="as-number">Number</option>
-                              <option value="as-letter">Letter</option>
-                              <option value="as-uppercase">Uppercase</option>
-                              <option value="as-lowercase">Lowercase</option>
-                              <option value="as-custom">Custom</option>
-                            </select>
-                            <input type="text" name="anti-spam-chars" id="anti-spam-chars" value="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+" readonly>
-                          </div>
-                          <div class="anti-spam-length-input-row">
-                            <label for="anti-spam-length-input">Anti spam length:</label>
-                            <div class="spam-delay-bottom">
-                              <input type="number" id="anti-spam-length-input" placeholder="500" min="1"/>
-                              <button class="increase-anti-spam-length-input">+</button>
-                              <button class="decrease-anti-spam-length-input">-</button>
-                            </div>
-                          </div>
-                          <div class="spam-time-input-row">
-                            <label for="spam-time-input">Spam time:</label>
-                            <div class="spam-delay-bottom">
-                              <input type="number" id="spam-time-input" placeholder="500" min="1"/>
-                              <button class="increase-spam-time-input">+</button>
-                              <button class="decrease-spam-time-input">-</button>
-                            </div>
-                          </div>
+                        </div>
+
+                        <div class="drop-all-page">
+                          <label for="drop-delay">Drop delay:</label>
+                          <input type="number" id="drop-delay">
+                        </div>
+                      </section>
+
+                      <section id="pathfinding-control">
+
                       </section>
 
                     </div>
@@ -147,12 +190,81 @@
             </section>
 
             <section id="settings" class="page-section">
-                SETTINGS
+              <div class="proxy-settings">
+                <label for="proxy-settings" class="proxy-settings-label">
+                  <p>Proxy settings</p>
+                </label>
+                <div class="use-proxy-box">
+                  <input type="checkbox" id="use-proxy">
+                  <label for="use-proxy">Use Proxy</label>
+                </div>
+
+                <select id="proxy-type">
+                  <option value="socks4">Socks4</option>
+                  <option value="socks5">Socks5</option>
+                  <option value="http">HTTP</option>
+                </select>
+
+                <div class="proxy-source-type">
+                  <input type="radio" name="proxy-source" id="use-proxy-file">
+                  <label for="use-proxy-file">Use file</label>
+                  <input type="radio" name="proxy-source" id="use-proxy-page">
+                  <label for="use-proxy-page">Use page</label>
+                </div>
+
+                <div class="proxy-source">
+                  <div class="proxy-source-page">
+                    <textarea class="proxy-page" id="proxy-page"></textarea>
+                    <button id="proxy-page-apply" class="proxy-page-apply">Apply</button>
+                  </div>
+                  
+                  <div class="proxy-source-file">
+                    <input type="file" class="proxy-file" id="proxy-file">
+                    <p id="proxy-file-path" class="proxy-file-path">No file choose</p>
+                    <label for="proxy-file" class="proxy-file-label">Set</label>
+                  </div>
+                </div>
+              </div>
+
             </section>
 
+            <section id="macros" class="page-section">
+              MACROS
+            </section>
+
+            <section id="plugins" class="page-section">
+              PLUGINS
+            </section>
+
+            <section id="extensions" class="page-section">
+
+              <div class="extensions-button">
+                <ul>
+                  <li><button class="extension-button" onclick="showextentions('server-get-status')">Server get status</button></li>
+                  <li><button class="extension-button" onclick="showextentions('server-get-status2')">Server get status2</button></li>
+                </ul>
+              </div>
+              
+              <section id="server-get-status" class="extension-page">
+                
+              </section>
+
+              <section id="server-get-status2" class="extension-page">
+                2
+              </section>
+
+            </section>
+
+            <section id="about" class="page-section">
+              
+            </section>
         </div>
     </div>
 
-    <script src="./control/html.js"></script>
+    <script src="./html.js"></script>
+    <script src="./import/index-import.js"></script>
+    <script src="./control/proxy/proxyhandler.js"></script>
+    <script src="./control/main-control.js"></script>
+    <script src="./preload.js"></script>
 </body>
 </html>

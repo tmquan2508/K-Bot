@@ -1,7 +1,10 @@
 {
   "dependencies": {
     "electron": "^31.2.0",
-    "mineflayer": "^4.20.1"
+    "minecraft-server-util": "^5.4.4",
+    "mineflayer": "^4.20.1",
+    "net": "^1.0.2",
+    "socks": "^2.8.3"
   },
   "name": "k-bot",
   "version": "1.0.0",

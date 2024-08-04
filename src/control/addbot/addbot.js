@@ -1,6 +1,3 @@
-const mineflayer = require('mineflayer')
-const { control } = require('../control/main-control');
-
 const join = document.getElementById('join')
 
     // let server = "147.185.221.20:44657"
@@ -21,16 +18,8 @@ join.addEventListener('click', function() {
     createbots(host, port, username, version, count, delay, namegen, authtype)
 });
 
-function createbot(host, port, username, version) {
-    const bot = mineflayer.createBot({
-        host: host,
-        port: port,
-        username: username,
-        version: version,
-    })
-
-    control(bot, host, port, version)
-
+function docreatebot(host, port, username, version) {
+    ipcRenderer.send('add-bot', { host, port, username, version })
 }
 
 function createbots(host, port, username, version, count, delay, namegen, authtype) {
@@ -38,7 +27,7 @@ function createbots(host, port, username, version, count, delay, namegen, authty
         for (let i = 1; i <= count; i++ ) {
             setTimeout(() => {
                 let name = getusername(username, namegen, i);
-                createbot(host, port, name, version);
+                docreatebot(host, port, name, version);
             }, i * delay);
         }
 

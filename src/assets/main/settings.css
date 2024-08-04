@@ -1,0 +1,81 @@
+#settings {
+    display: flex;
+    text-align: start;
+    margin-left: 5px;
+}
+
+.proxy-settings {
+    display: block;
+    border: 2px gray solid;
+    border-radius: 3px;
+    width: 260px;
+    margin-top: 5px;
+    padding: 2.5px;
+}
+
+.proxy-settings-label {
+    font-size: 25px;
+    color:lightgray;
+    text-align: center;
+}
+
+.proxy-source-page {
+    width: 250px;
+    height: 350px;
+}
+
+.proxy-page {
+    width: 250px;
+    height: 300px;
+    border: none;
+    outline: none;
+    padding: 2px;
+}
+
+.proxy-page-apply {
+    width: 250px;
+    height: 44px;
+}
+
+.proxy-file[type="file"] {
+    display: none;
+}
+
+.proxy-source-file {
+    display: flex;
+}
+
+.proxy-file-path {
+    width: 200px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 20px;
+    border-bottom: 2px white solid;
+    overflow: auto;
+    overflow-y: hidden;
+    text-overflow: clip;
+    white-space: nowrap;
+}
+
+.proxy-file-path::-webkit-scrollbar {
+    display: none;
+}
+
+.proxy-file-label {
+    padding: 5px 10px;
+    border: 2px gray solid;
+    background-color: lightgray;
+    margin-left: 2.5px;
+}
+
+.proxy-file-label:hover {
+    padding: 5px 10px;
+    border: 2px gray solid;
+    background-color: gray;
+}
+
+.proxy-file-label:active {
+    padding: 5px 10px;
+    border: 2px rgb(80, 80, 80) solid;
+    background-color: rgb(80, 80, 80);
+}

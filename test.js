@@ -1,24 +1,34 @@
-function generateRandomName() {
-    const firstnames = [
-        'James', 'John', 'Robert', 'Michael', 'William', 'David', 'Richard', 'Joseph', 'Charles', 'Thomas',
-        'Christopher', 'Daniel', 'Matthew', 'Anthony', 'Donald', 'Mark', 'Paul', 'Steven', 'Andrew', 'Kenneth',
-        'Joshua', 'Kevin', 'Brian', 'George', 'Edward', 'Ronald', 'Timothy', 'Jason', 'Jeffrey', 'Ryan',
-        'Jacob', 'Gary', 'Nicholas', 'Eric', 'Stephen', 'Jonathan', 'Larry', 'Justin', 'Scott', 'Brandon',
-        'Frank', 'Benjamin', 'Gregory', 'Raymond', 'Samuel', 'Patrick', 'Alexander', 'Jack', 'Dennis', 'Jerry'
-    ];
+const util = require("minecraft-server-util");
 
-    const lastnames = [
-        'Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia', 'Miller', 'Davis', 'Rodriguez', 'Martinez',
-        'Hernandez', 'Lopez', 'Gonzalez', 'Wilson', 'Anderson', 'Thomas', 'Taylor', 'Moore', 'Jackson', 'Martin',
-        'Lee', 'Perez', 'Thompson', 'White', 'Harris', 'Sanchez', 'Clark', 'Ramirez', 'Lewis', 'Robinson',
-        'Walker', 'Young', 'Allen', 'King', 'Wright', 'Scott', 'Torres', 'Nguyen', 'Hill', 'Flores',
-        'Green', 'Adams', 'Nelson', 'Baker', 'Hall', 'Rivera', 'Campbell', 'Mitchell', 'Carter', 'Roberts'
-    ];
+async function getStatus(server) {
+  const address = util.parseAddress(server);
+  try {
+    const result = await util.status(address.host, address.port, {
+      enableSRV: true,
+    });
 
-    const randomfirstname = firstnames[Math.floor(Math.random() * firstnames.length)];
-    const randomlastname = lastnames[Math.floor(Math.random() * lastnames.length)];
+    console.log(result);
 
-    return `${randomfirstname} ${randomlastname}`;
+    // console.log(`Server: ${server}`);
+    // console.log(`Host: ${address.host}`);
+    // console.log(`Port: ${address.port}`);
+    // console.log(`Online: ${result.players.online}`);
+    // console.log(`Motd: ${result.motd.clean}`);
+    // console.log(`Players: ${result.players.online}/${result.players.max}`);
+    // console.log(`Version: ${result.version.name}`);
+
+    // if (result.players.sample) {
+    //   console.log(`Online Players: ${result.players.sample.map(player => player.name).join(', ')}`);
+    // } else {
+    //   console.log('Player names not available');
+    // }
+
+    // return result;
+    console.log(result.srvRecord.host + result.srvRecord.port);
+  } catch (error) {
+    console.error(`Error fetching server status: ${error.message}`);
+    throw error;
+  }
 }
 
-console.log(generateRandomName())
+getStatus('keep-lo.gl.joinmc.link');
